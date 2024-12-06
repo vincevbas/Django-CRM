@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Song
 
 
 class SignUpForm(UserCreationForm):
@@ -29,3 +30,18 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 		self.fields['password2'].label = ''
 		self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
+
+
+
+# Create Add Song Form
+class AddSongForm(forms.ModelForm):
+	song_title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Song Title", "class=":"form control"}), label="")
+	release_type = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Release Type", "class=":"form control"}), label="")
+	album_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Album Name", "class=":"form control"}), label="")
+	album_format = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Album Format", "class=":"form control"}), label="")
+	release_date = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Release Date", "class=":"form control"}), label="")
+	artist_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Artist Name", "class=":"form control"}), label="")
+
+	class Meta:
+		model = Song
+		exclude = ("user",) 

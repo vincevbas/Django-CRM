@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ loona_song.song_title }}</strong>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+<strong>Release Type: </strong>{{ loona_song.release_type }}</p> 
+			    	
+<p class="card-text">
+<strong>Album Name: </strong>{{ loona_song.album_name }}</p>
+			    	
+<p class="card-text">
+<strong>Album Format: </strong>{{ loona_song.album_format }}</p>
+			    	
+<p class="card-text">
+<strong>Release Date: </strong>{{ loona_song.release_date }}</p>
+			    	
+<p class="card-text">
+<strong>Artist Name: </strong>{{ loona_song.artist_name }}</p>
+			    	
+<p class="card-text">
+<strong>ID: </strong>{{ loona_song.id }}</p>
+    
+    
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'delete_song' loona_song.id %}" class="btn btn-danger">Delete</a>
+
+<a href="{% url 'update_song' loona_song.id %}" class="btn btn-secondary">Update Song</a>
+
+{% endblock %}

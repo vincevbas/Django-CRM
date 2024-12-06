@@ -2,20 +2,56 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
+
 
 {% if user.is_authenticated %}
 
-<h1>Welcome to LOONATHEWORLD!</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Song Title</th>
+      <th scope="col">Release Type</th>
+      <th scope="col">Album Name</th>
+      <th scope="col">Album Format</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Artist Name</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{% if songs %}
+    {% for song in songs %}
+      <tr>
+        <td>{{ song.song_title }}</td>
+        <td>{{ song.release_type }}</td>
+        <td>{{ song.album_name }}</td>
+        <td>{{ song.album_format }}</td>
+        <td>{{ song.release_date }}</td>
+        <td>{{ song.artist_name }}</td>
+        <td><a href="{% url 'song' song.id %}">{{ song.id }}</a></td>
+      </tr>
+    {% endfor %}
+
+{% endif %}
+
+  
+    </tbody>
+  </table>
+
+
+
 
 {% else %}
 
+<div class="col-md-6 offset-md-3">
 <h1>Login</h1> 
 <br/>
 
 <form method="POST" action="{% url 'home' %}">
     {% csrf_token %}
-    <form>
+
   <div class="mb-3">
     <input type="text" class="form-control" name="username", placeholder="Username" required>
 
@@ -25,12 +61,13 @@
   </div>
   <br/>
   <button type="submit" class="btn btn-secondary">Login</button>
-</form>
 
 </form>
 
+</form>
 
-</div>
+
+
 
 {% endif %}
 
