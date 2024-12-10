@@ -3,10 +3,42 @@
 {% block content %}
 
 
-
 {% if user.is_authenticated %}
 
+<h2>Welcome to LOONATHEARCHIVE, Orbit!</h2>
+<br>
 
+<p>
+  <button class="btn btn-info" type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#description" 
+          aria-expanded="false" 
+          aria-controls="description">
+      <span class="collapsed-text">Show Description</span>
+      <span class="expanded-text d-none">Hide Description</span>
+  </button>
+</p>
+    <div class="collapse" id="description">
+      <br>
+        <p style="font-size: 14px;">
+            LOONA (Hangul: 이달의 소녀, Idalui Sonyeo), also stylized as LOOΠΔ/, is a South Korean girl group originally formed by BlockBerryCreative (BBC). The group is composed of 12 members: HeeJin, HyunJin, HaSeul, YeoJin, ViVi, Kim Lip, JinSoul, Choerry, Yves, Chuu, GoWon, and Olivia Hye; and its three pre-debut sub-units: LOONA 1/3, ODD EYE CIRCLE, and yyxy.
+        </p>
+
+        <p style="font-size: 14px;">
+            From October 2016 until June 2018, each member of the group was revealed one by one, along with a single album (1 title & 1 b-side) named after them and a music video for the title track. An EP for each sub-unit was also released in between. The complete group debuted on August 19, 2018, at their debut concert with the release of [+ +] EP on the following day.
+        </p>
+
+        <p style="font-size: 14px;">
+            Between November 25, 2022 and June 16, 2023, all twelve members of LOONA left BBC after a series of legal actions and allegations of mismanagement. Their fans, called Orbits, managed to help by boycotting their music on streaming platforms, preparing comebacks, and merchandise as well as writing petition letters. HeeJin, HaSeul, Kim Lip, JinSoul, and Choerry signed with the entertainment company MODHAUS to form ARTMS, while HyunJin, YeoJin, ViVi, GoWon, and HyeJu joined CTDENM as Loossemble. Yves and Chuu chose to pursue solo activities. Despite splitting into separate companies and groups, LOONA itself has not officially disbanded.
+        </p>
+
+        <p style="font-size: 14px;">
+            LOONA’s discography is massive, reaching more than two hundred before leaving the company. Aside from official releases, this also includes commercial songs, OST for K-dramas, survival shows, etc. With the group being split into four entities, the list just keeps growing. In fact, as of December 2024, they’re still very much active, especially with HaSeul releasing another digital single. HyunJin will also release a digital single, following the news of Loossemble leaving CTDENM.
+        </p>
+    </div>
+</div>
+
+<br>
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>
@@ -32,6 +64,7 @@
         <td>{{ song.artist_name }}</td>
         <td><a href="{% url 'song' song.id %}">{{ song.id }}</a></td>
       </tr>
+  </div>
     {% endfor %}
 
 {% endif %}
@@ -70,5 +103,22 @@
 
 
 {% endif %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const collapseElement = document.getElementById('description');
+    const button = document.querySelector('[data-bs-target="#description"]');
+    const collapsedText = button.querySelector('.collapsed-text');
+    const expandedText = button.querySelector('.expanded-text');
 
+    collapseElement.addEventListener('show.bs.collapse', function () {
+        collapsedText.classList.add('d-none');
+        expandedText.classList.remove('d-none');
+    });
+
+    collapseElement.addEventListener('hide.bs.collapse', function () {
+        collapsedText.classList.remove('d-none');
+        expandedText.classList.add('d-none');
+    });
+});
+</script>
 {% endblock %}

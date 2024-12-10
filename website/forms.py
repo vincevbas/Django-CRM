@@ -35,12 +35,12 @@ class SignUpForm(UserCreationForm):
 
 # Create Add Song Form
 class AddSongForm(forms.ModelForm):
-	song_title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Song Title", "class=":"form control"}), label="")
-	release_type = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Release Type", "class=":"form control"}), label="")
-	album_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Album Name", "class=":"form control"}), label="")
-	album_format = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Album Format", "class=":"form control"}), label="")
-	release_date = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Release Date", "class=":"form control"}), label="")
-	artist_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Artist Name", "class=":"form control"}), label="")
+	song_title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Song Title", "class":"form-control"}), label="")
+	release_type = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Release Type", "class":"form-control"}), label="")
+	album_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Album Name", "class":"form-control"}), label="")
+	album_format = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Album Format", "class":"form-control"}), label="")
+	release_date = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Release Date", "class":"form-control"}), label="")
+	artist_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Artist Name", "class":"form-control"}), label="")
 
 	class Meta:
 		model = Song
